@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <h3># DOM을 이용해 다른 Element를 찾아가는 방법</h3>
+    <ul>
+        <li>parentNode</li>
+        <li>children[nth]</li>
+        <li>firstChild</li>
+        <li>lastChild</li>
+        <li>nextSibling</li>
+        <li>previousSibling</li>
+    </ul>
+
+    <div id="container">
+        <div id="div1">Apple</div>
+        <div id="div2">Banana</div>
+        <div id="div3">Cocoa</div>
+        <div id="div4">Pineapple</div>
+        <div id="div5">kiwi</div>
+        <div></div>
+    </div>
+
+    <script>
+        const div3 = document.getElementById('div3');
+        const container = div3.parentNode;
+
+        console.log(div3.parentNode);
+        console.log(div3.nextSibling);
+        console.log(div3.nextSibling.nextSibling);
+        console.log(div3.previousElementSibling);
+
+        console.log(container.children);
+        console.log(container.children.length);
+
+        for (i=0; i < container.children.length; i++) {
+            console.log(container.children[i]);
+        };
+    </script>
+</body>
+</html>

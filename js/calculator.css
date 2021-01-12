@@ -1,0 +1,93 @@
+@font-face {
+    font-family: "D2Coding";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.3/NeoDunggeunmo.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+  body {
+    background-color: beige;
+    font-family: "NeoDunggeunmo";
+  }
+  
+  .codepen-title {
+    margin-bottom: 20px;
+    font-size: 42px;
+    color: dodgerblue;
+  }
+  
+  .wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+  }
+  
+  .calc-wrapper {
+    width: 480px;
+    padding: 20px;
+    background: #75c8ae;
+    border-radius: 25px;
+    font-size: 14px;
+  }
+  
+  .calc {
+    padding: 25px;
+    background: #ffebb2;
+    border-radius: 20px;
+  }
+  
+  .result {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    background: #7d7769;
+    border-radius: 5px;
+    box-shadow: 0 -4px 4px inset rgba(0, 0, 0, 0.5);
+  }
+  .result .store {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: rgba(0, 0, 0, 0.8);
+  }
+  .result .current-value {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    font-size: 30px;
+  }
+  
+  .viewer {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+  }
+  
+  button {
+    background: none;
+    border: 0;
+    outline: 0;
+  }
+  
+  .btn {
+    width: calc(25% - 10px);
+    height: 50px;
+    margin: 5px;
+    background: #666;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+  .btn.clear, .btn.all-clear {
+    background: #f75e50;
+  }
+  .btn.symbol {
+    background: #e5771e;
+  }
+  .btn.equal {
+    width: calc(50% - 10px);
+    background: #f4a127;
+  }

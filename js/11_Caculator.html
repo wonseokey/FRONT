@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기</title>
+    <link rel="stylesheet" href="./calculator.css">
+    
+</head>
+<body>
+
+    <style>
+
+    </style>
+
+    <!-- 계산기를 만들어보세요 -->
+
+    <div class="wrapper"><strong class="codepen-title">LEE WON SEOK CALCULATOR</strong>
+        <div class="calc-wrapper">
+            <div class="calc">
+            <div class="result">
+                <div class="store"></div>
+                <div class="current-value"></div>
+            </div>
+            <div class="viewer">
+                <button class="btn all-clear">AC</button>
+                <button class="btn clear">C</button>
+                <button class="btn sign">+/-</button>
+                <button class="btn symbol divide">/</button>
+                <button class="btn num num-7">7</button>
+                <button class="btn num num-8">8</button>
+                <button class="btn num num-9">9</button>
+                <button class="btn symbol times">*</button>
+                <button class="btn num num-4">4</button>
+                <button class="btn num num-5">5</button>
+                <button class="btn num num-6">6</button>
+                <button class="btn symbol minus">-</button>
+                <button class="btn num num-1">1</button>
+                <button class="btn num num-2">2</button>
+                <button class="btn num num-3">3</button>
+                <button class="btn symbol plus">+</button>
+                <button class="btn num num-0">0</button>
+                <button class="btn dot">.</button>
+                <button class="btn equal">=</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+
+    <script>
+        const currentValue = document.querySelector('.current-value');
+        const store  = document.querySelector('.store');
+
+        const numbers = Array.from(document.querySelectorAll('.num'));
+
+        numbers.map(number => {
+        number.addEventListener('click', setNum);
+        })
+
+        function setNum() {
+        currentValue.innerText += this.innerText;
+        }
+
+        const symbols = Array.from(document.querySelectorAll('.symbol'));
+
+        symbols.map(symbol => {
+        symbol.addEventListener('click', setSymbol);
+        })
+
+        function setSymbol() { 
+        if (currentValue.innerText !== '') { //현재 값에 아무도 없다면
+            if (store.innerText === '') { // 첫 입력이라면
+            store.innerText = currentValue.innerText + ' ' + this.innerText
+            } else { // 첫 입력이 아닐 경우
+            store.innerText = `${store.innerText} ${currentValue.innerText} ${this.innerText}`
+            }
+        } 
+        
+        clearValue(); 
+        }
+
+        const equal = document.querySelector('.equal');
+
+        equal.addEventListener('click', getTotal);
+
+        function getTotal() {
+        if(currentValue.innerText !== '') { 
+            currentValue.innerText = eval(store.innerText + currentValue.innerText);
+        } 
+        clearStore();
+        }
+
+        const dot = document.querySelector('.dot');
+        const sign = document.querySelector('.sign');
+
+        dot.addEventListener('click', setDot);
+
+        sign.addEventListener('click', setSign);
+
+        function setDot() {
+        currentValue.innerText.indexOf('.') === -1 ? 
+        currentValue.innerText = `${currentValue.innerText}.` :
+        false;
+        }
+
+        function setSign() {
+        currentValue.innerText.indexOf('-') === -1 ? 
+        currentValue.innerText = `-${currentValue.innerText}` :
+        currentValue.innerText = currentValue.innerText.replace('-','');
+        }
+
+        const clear = document.querySelector('.clear');
+        const allClear = document.querySelector('.all-clear');
+
+        clear.addEventListener('click', clearValue);
+
+        allClear.addEventListener('click', function(){
+        clearValue();
+        clearStore();
+        });
+
+        function clearValue() {
+        currentValue.innerText = '';
+        }
+
+        function clearStore() {
+        store.innerText = '';
+        }
+
+        function setNum() {
+        currentValue.innerText.length < 25 ? 
+        currentValue.innerText += this.innerText :
+        alert('Oooops🤦 Can you re-enter it within the maximum input range?');
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로또</title>
+</head>
+<body>
+    <script>
+        function lotto() {
+            var ctx = document.getElementById("canvas").getContext("2d");
+            ctx.clearRect(0,0,canvas.width, canvas.height);
+
+            lottoNum = new Array(45);
+            for (i=0; i < 45; i++){
+                lottoNum[i] = i + 1;
+            }
+
+            var rNum;
+            myNum = new Array(6);
+            for (i=0; i<6; i++){
+                rNum = parseInt(Math.random()*lottoNum.length);
+                myNum[i] = lottoNum[rNum];
+                lottoNum.splice(rNum, 1);
+            }
+
+            for (i=0; i<6; i++){
+                for (j=0; j<=i; j++){
+                    if (myNum[i] <= myNum[j]){
+                        k = myNum[i];
+                        myNum[i] = myNum[j];
+                        myNum[j] = k;
+                    }
+                }
+            }
+            document.getElementById("number").innerHTML = myNum;
+
+            ctx.font="22px Arial";
+            ctx.textAlign="center"
+
+            for (i=0; i<6; i++){
+                switch(Math.ceil(myNum[i]/10)){
+                    case 1:
+                        ctx.beginPath();
+                        ctx.arc(i*60+30, 25, 20, 0, 2*Math.PI, false);
+                        ctx.fillStyle = "rgb(250,196,0)";
+                        ctx.fill();
+                        ctx.closePath();
+                        break;
+                    case 2:
+                        ctx.beginPath();
+                        ctx.arc(i*60+30, 25, 20, 0, 2*Math.PI, false);
+                        ctx.fillStyle = "rgb(250,196,0)";
+                        ctx.fill();
+                        ctx.closePath();
+                        break;
+                    case 3:
+                        ctx.beginPath();
+                        ctx.arc(i*60+30, 25, 20, 0, 2*Math.PI, false);
+                        ctx.fillStyle = "rgb(250,196,0)";
+                        ctx.fill();
+                        ctx.closePath();
+                        break;
+                    case 4:
+                        ctx.beginPath();
+                        ctx.arc(i*60+30, 25, 20, 0, 2*Math.PI, false);
+                        ctx.fillStyle = "rgb(250,196,0)";
+                        ctx.fill();
+                        ctx.closePath();
+                        break;
+                    case 5:
+                        ctx.beginPath();
+                        ctx.arc(i*60+30, 25, 20, 0, 2*Math.PI, false);
+                        ctx.fillStyle = "rgb(250,196,0)";
+                        ctx.fill();
+                        ctx.closePath();
+                        break;
+                }
+                ctx.fillStyle = "white";
+                ctx.fillText(myNum[i], i*60+32, 32);
+            }
+        }
+    </script>
+
+    <input id="btn" type="button" onclick="lotto()" value="로또 생성">
+    <div 
+    id="number" style="font-size: 20px; border: 1px solid; width: 150px; height: 20px; text-align: center; padding: 10px;"></div>
+
+    <canvas id="canvas" height="50" width="360"></canvas>
+</body>
+</html>
